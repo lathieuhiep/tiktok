@@ -1,19 +1,13 @@
 import {useState} from "react";
+import Content from "./Content";
 
 function App() {
-    const orders = [100, 200, 300];
-    const [counter, setCounter] = useState(() => {
-        return orders.reduce((total, cur) => total + cur);
-    });
-
-    const handleIncrease = () => {
-        setCounter(prevState => prevState + 1)
-    }
-
+    const [toggle, setToggle] = useState(false)
     return (
         <div className="App" style={{padding: 20}}>
-            <h1>{counter}</h1>
-            <button onClick={handleIncrease}>Increase</button>
+            <button onClick={() => setToggle(!toggle)}>Toggle</button>
+
+            {toggle && <Content />}
         </div>
     );
 }
