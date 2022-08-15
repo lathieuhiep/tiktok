@@ -1,14 +1,19 @@
-import {useState} from "react";
-import Content from "./Content";
+import Content from "./Content"
+import './App.css'
+import {useContext} from "react";
+import {ThemeContext} from "./ThemeContext";
 
 function App() {
-    const [toggle, setToggle] = useState(false)
-    return (
-        <div className="App" style={{padding: 20}}>
-            <button onClick={() => setToggle(!toggle)}>Toggle</button>
+    const context = useContext(ThemeContext)
 
-            {toggle && <Content />}
-        </div>
+    return (
+
+            <div className="App" style={{padding: 20}}>
+                <button onClick={context.handleToggleTheme}>Toggle theme</button>
+
+                <Content />
+            </div>
+
     );
 }
 
